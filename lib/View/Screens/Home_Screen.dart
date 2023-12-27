@@ -34,8 +34,8 @@ class HomeScreen extends StatelessWidget {
                     ? const Center(
                         child: CircularProgressIndicator(color: Colors.black))
                     : SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
-                      child: Column(
+                        physics: const BouncingScrollPhysics(),
+                        child: Column(
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,7 +91,8 @@ class HomeScreen extends StatelessWidget {
                             const Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     'كمية ',
@@ -127,7 +128,8 @@ class HomeScreen extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     cubit.getBillsModel!.data[0].itemsList[0]
@@ -146,6 +148,34 @@ class HomeScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
+                            const Text(
+                              'تفاصيل الفاتورة',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20),
+                            ),
+                            defaultFormField(
+                                title: 'تفاصيل الفاتورة',
+                                controller: cubit.descriptionController,
+                                type: TextInputType.text,
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'ادخل تفاصيل الفاتورة';
+                                  }
+                                },
+                                hint: ''),
+                            defaultFormField(
+                                title: 'المبلغ الكلي',
+                                controller: cubit.TotalController,
+                                type: TextInputType.text,
+                                width: .3.sw,
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'ادخل المبلغ الكلي';
+                                  }
+                                },
+                                hint: ''),
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 16.0, vertical: 30),
@@ -167,7 +197,7 @@ class HomeScreen extends StatelessWidget {
                             )
                           ],
                         ),
-                    ),
+                      ),
               );
             },
           ),

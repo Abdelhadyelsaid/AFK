@@ -22,14 +22,16 @@ Widget defaultFormField({
   Function? suffixPressed,
 }) =>
     Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         title != null
             ? Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
+
               title,
-              style: TextStyle(fontSize: 18.sp, color: Colors.grey),
+              style: TextStyle(fontSize: 18.sp, color: Colors.grey,),
             ),
             SizedBox(
               height: 10.h,
@@ -41,6 +43,7 @@ Widget defaultFormField({
           width: width ?? .9.sw,
           height: height,
           child: TextFormField(
+            textDirection: TextDirection.rtl,
             readOnly: readOnly,
             textAlign: TextAlign.start,
             style: TextStyle(
